@@ -124,27 +124,7 @@ Proper validation and confirmation messages are shown.
 - **Architecture**: RESTful MVC Architecture
 - **Authentication**: Role-Based Access Control
 
----
-
-## 🚀 How to Run the Project
-
-### Backend (Spring Boot)
-1. Clone the repository  
-   ```bash
-   git clone <repository-url>
-2. Import backend project into IDE (IntelliJ / Eclipse)  
-3. Configure Derby database  
-4. Run Spring Boot application  
-
-### Frontend (Angular)  
-1. Navigate to Angular project folder  
-2. Install dependencies
-   npm install
-3. Run Angular application  
-   ng serve  
-
-Access application at  
-http://localhost:4200  
+--- 
 
 ### 📌 Conclusion  
 The Parcel Management System provides a complete solution for managing parcel operations with role-based access, real-time tracking, invoice generation, and delivery management using Angular, Spring Boot, and Derby database.  
