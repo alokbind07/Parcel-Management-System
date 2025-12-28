@@ -1,0 +1,46 @@
+/* Main container for the contact support page */
+.support-container {
+    text-align: center;
+    padding: 120px 20px 80px; /* Accounts for fixed Navbar and Footer */
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9; /* Light gray background for contrast */
+    min-height: calc(100vh - 200px); /* Ensures full height minus header and footer */
+    box-sizing: border-box; /* Includes padding in height/width calculation */
+  }
+  
+  /* Heading */
+  h1 {
+    color: #2c3e50; /* Dark blue color */
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  /* Description paragraph */
+  p {
+    color: #7f8c8d; /* Gray color */
+    font-size: 1rem;
+    margin-bottom: 30px;
+  }
+  
+  /* Support details block */
+  .support-details {
+    background-color: white;
+    border: 2px solid #bdc3c7; /* Light gray border */
+    padding: 20px;
+    margin: 0 auto 20px;
+    max-width: 400px; /* Restricts width for a compact look */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  }
+  
+  /* Emphasized text inside the support details */
+  .support-details p {
+    font-size: 1rem;
+    margin: 10px 0;
+    color: #34495e; /* Darker gray for text */
+  }
+  
+  .support-details strong {
+    color: #16a085; /* Teal color for emphasis */
+  }
+  

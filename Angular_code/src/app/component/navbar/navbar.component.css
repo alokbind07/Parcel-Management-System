@@ -1,0 +1,59 @@
+/* General Navbar Container */
+.navbar-container {
+    background-color: #333; /* Dark background color */
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: white;
+  }
+  
+  /* Navbar */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Navigation Buttons */
+  .nav-btn a {
+    text-decoration: none;
+    color: white; /* Button text color */
+    padding: 10px 15px;
+    margin: 0 5px;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    transition: all 0.3s ease-in-out;
+    font-size: 14px;
+  }
+  
+  .nav-btn a:hover {
+    background-color: #555; /* Slightly lighter color on hover */
+    border-color: white; /* Add a border on hover */
+    cursor: pointer;
+  }
+  
+  /* User Info Section */
+  .user-info {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between name and logout */
+  }
+  
+  .user-info p {
+    margin: 0;
+  }
+  
+  .user-info a {
+    text-decoration: none;
+    color: #ff6b6b; /* Highlighted logout button */
+    padding: 5px 10px;
+    border: 2px solid #ff6b6b;
+    border-radius: 4px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .user-info a:hover {
+    background-color: #ff6b6b;
+    color: white;
+  }
+  

@@ -1,0 +1,22 @@
+<app-component-officer-navbar></app-component-officer-navbar>
+
+<div class="update-container">
+    <h2>Update Parcel Status</h2>
+    <br>
+
+    <label for="bookingId">Booking ID:</label>
+    <input  [(ngModel)]="bookingId" type="text" id="bookingId" name="bookingid" placeholder="Enter your Booking ID" />
+    <br><br>
+
+    <label for="parcelStatus">Parcel Status:</label>
+    <select  [(ngModel)]="parStatus" id="parcelStatus" name="parcelstatus">
+        <option value="Booked">Booked</option>
+        <option value="In-Transit">In Transit</option>
+        <option value="Delivered">Delivered</option>
+        <option value="Returned">Returned</option>
+    </select>
+    <br><br>
+
+    <button (click)="onUpdateStatus()">Update Status</button>
+    <br>
+</div>

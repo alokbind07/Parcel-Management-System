@@ -1,0 +1,178 @@
+<app-component-officer-navbar></app-component-officer-navbar>
+
+<div class="container">
+  <h1>Booking Service</h1>
+
+  <div class="booking-form">
+    <h2>Enter Booking Details</h2>
+
+    <form #bookingForm="ngForm" (ngSubmit)="bookParcel()">
+      
+      <!-- User Details -->
+      <label for="User_ID">User ID:</label>
+      <input type="text" id="User_ID" [(ngModel)]="parcel.User_ID" name="User_ID" required #User_ID="ngModel">
+      <div class="validate" *ngIf="User_ID.invalid && User_ID.touched">
+        <p>User ID is required!</p>
+      </div>
+
+      <label for="User_Name">User Name:</label>
+      <input type="text" id="User_Name" [(ngModel)]="parcel.User_Name" name="User_Name" pattern="^[A-Za-z\s]+$" minlength="2" required #User_Name="ngModel">
+      <div class="validate" *ngIf="User_Name.invalid && User_Name.touched">
+        <p *ngIf="User_Name.errors?.['required']">User Name is required!</p>
+        <p *ngIf="User_Name.errors?.['pattern']">User Name should only consist of characters!</p>
+        <p *ngIf="User_Name.errors?.['minlength']">User Name should be at least more than 2 characters!</p>
+      </div>
+
+      <label for="User_Address">User Address:</label>
+      <input type="text" id="User_Address" [(ngModel)]="parcel.User_Address" name="User_Address" required minlength="5"  maxlength="1000" pattern="^[A-Za-z0-9\s,.-]*$" #User_Address="ngModel">
+      <div class="validate" *ngIf="User_Address.invalid && User_Address.touched">
+        <p *ngIf="User_Address.errors?.['required']">User Address is required!</p>
+        <p *ngIf="User_Address.errors?.['minlength']">User Address must be at least 5 characters long!</p>
+        <p *ngIf="User_Address.errors?.['maxlength']">User Address must not exceed 1000 characters!</p>
+        <p *ngIf="User_Address.errors?.['pattern']">User Address can only contain letters, numbers, spaces, commas, periods, and hyphens!</p>
+      </div>
+
+      <!-- Recipient Details -->
+      <label for="Rec_Name">Recipient Name:</label>
+      <input type="text" id="Rec_Name" [(ngModel)]="parcel.Rec_Name" name="Rec_Name" pattern="^[A-Za-z\s]+$" minlength="2" required #Rec_Name="ngModel">
+      <div class="validate" *ngIf="Rec_Name.invalid && Rec_Name.touched">
+        <!-- Display validation messages based on the error type -->
+        <p *ngIf="Rec_Name.errors?.['required']">Recipient Name is required!</p>
+        <p *ngIf="Rec_Name.errors?.['minlength']">Recipient Name must be at least 2 characters long!</p>
+        <p *ngIf="Rec_Name.errors?.['pattern']">Recipient Name should only consist of letters and spaces!</p>
+      </div>
+
+      <label for="Rec_Address">Recipient Address:</label>
+      <input type="text" id="Rec_Address" [(ngModel)]="parcel.Rec_Address" name="Rec_Address" required minlength="5"  maxlength="1000" pattern="^[A-Za-z0-9\s,.-]*$" #Rec_Address="ngModel">
+      <div class="validate" *ngIf="Rec_Address.invalid && Rec_Address.touched">
+        <!-- Display validation messages based on the error type -->
+        <p *ngIf="Rec_Address.errors?.['required']">Address is required!</p>
+        <p *ngIf="Rec_Address.errors?.['minlength']">Address must be at least 5 characters long!</p>
+        <p *ngIf="Rec_Address.errors?.['maxlength']">Address cannot exceed 1000 characters!</p>
+        <p *ngIf="Rec_Address.errors?.['pattern']">Address should only contain letters, numbers, spaces, commas, periods, and hyphens!</p>
+      </div>
+
+      <label for="Rec_Pin">Recipient PIN:</label>
+      <input type="text" id="Rec_Pin" [(ngModel)]="parcel.Rec_Pin" name="Rec_Pin" pattern="^[1-9][0-9]{5}" required #Rec_Pin="ngModel">
+      <div class="validate" *ngIf="Rec_Pin.invalid && Rec_Pin.touched">
+        <!-- Display validation messages based on the error type -->
+        <p *ngIf="Rec_Pin.errors?.['required']">PIN is required!</p>
+        <p *ngIf="Rec_Pin.errors?.['pattern']">PIN must be exactly 6 digits and cannot start with zero!</p>
+      </div>
+
+
+           <!-- Mobile Number -->
+         <label for="Rec_Mobile">Recipient Mobile:</label>
+         <input type="text" id="Rec_Mobile" [(ngModel)]="parcel.Rec_Mobile" name="Rec_Mobile" pattern="^[1-9][0-9]{9}$" required minlength="10" #Rec_Mobile="ngModel">
+         <div class="validate" *ngIf="Rec_Mobile.invalid && Rec_Mobile.touched">
+            <p *ngIf="Rec_Mobile.errors?.['required']">Mobile number is required!</p>
+            <p *ngIf="Rec_Mobile.errors?.['minlength'] && !Rec_Mobile.errors?.['pattern']">Mobile number should be exactly 10 digits!</p>
+            <p *ngIf="Rec_Mobile.errors?.['pattern'] && !Rec_Mobile.errors?.['required']">Mobile number should be 10 digits and must not start with 0!</p>
+          </div>
+
+
+      <!-- Parcel Weight -->
+      <label for="Par_Weight_Gram">Parcel Weight (grams):</label>
+      <input type="number" id="Par_Weight_Gram" [(ngModel)]="parcel.Par_Weight_Gram" name="Par_Weight_Gram" min="1" required (input)="calculateCost()" #Par_Weight_Gram="ngModel">
+      <div class="validate" *ngIf="Par_Weight_Gram.invalid && Par_Weight_Gram.touched">
+        <p>Weight must be greater than 0.</p>
+      </div>
+
+      <!-- Weight Cost Explanation -->
+      <p><strong>Weight-based Cost:</strong> The cost is calculated at 10 Rs per kilogram. 
+        Example: A 500g parcel will cost 5 Rs, and a 1000g parcel will cost 10 Rs.
+      </p>
+
+      <!-- Parcel Contents Description -->
+      <label for="Par_Contents_Description">Parcel Contents Description:</label>
+      <textarea id="Par_Contents_Description" [(ngModel)]="parcel.Par_Contents_Description" name="Par_Contents_Description" required  minlength="10" maxlength="500" pattern="^[A-Za-z0-9\s,.-]+$" #Par_Contents_Description="ngModel"></textarea>
+      <div class="validate" *ngIf="Par_Contents_Description.invalid && Par_Contents_Description.touched">
+        <p *ngIf="Par_Contents_Description.errors?.['required']">Description is required.</p>
+        <p *ngIf="Par_Contents_Description.errors?.['minlength']">Description must be at least 10 characters long.</p>
+        <p *ngIf="Par_Contents_Description.errors?.['maxlength']">Description cannot exceed 500 characters.</p>
+        <p *ngIf="Par_Contents_Description.errors?.['pattern']">Description can only contain letters, numbers, spaces, commas, periods, and hyphens.</p>
+      </div>
+
+      <!-- Delivery Type -->
+      <label for="Par_Delivery_Type">Delivery Type:</label>
+      <select id="Par_Delivery_Type" [(ngModel)]="parcel.Par_Delivery_Type" name="Par_Delivery_Type" required (change)="calculateCost()" #Par_Delivery_Type="ngModel">
+        <option value="Standard" selected>Standard - 30 Rs</option>
+        <option value="Express">Express - 50 Rs</option>
+        <option value="Overnight">Overnight - 100 Rs</option>
+        <option value="SameDay">Same Day - 80 Rs</option>
+      </select>
+      <div class="validate" *ngIf="Par_Delivery_Type.invalid && Par_Delivery_Type.touched">
+        <p>Delivery type is required.</p>
+      </div>
+
+      <p><strong>Delivery Type Explanation:</strong></p>
+      <ul>
+        <li><strong>Standard:</strong> Regular delivery.</li>
+        <li><strong>Express:</strong> Faster delivery with a premium cost.</li>
+        <li><strong>Overnight:</strong> Delivered the next day.</li>
+        <li><strong>Same Day:</strong> Delivered on the same day.</li>
+      </ul>
+
+      <!-- Packing Preference -->
+      <label for="Par_Packing_Preference">Packing Preference:</label>
+      <select id="Par_Packing_Preference" [(ngModel)]="parcel.Par_Packing_Preference" name="Par_Packing_Preference" required (change)="calculateCost()" #Par_Packing_Preference="ngModel">
+        <option value="Normal" selected>Normal - 30 Rs</option>
+        <option value="Fragile">Fragile - 50 Rs</option>
+        <option value="HeavyDuty">Heavy Duty - 70 Rs</option>
+      </select>
+      <div class="validate" *ngIf="Par_Packing_Preference.invalid && Par_Packing_Preference.touched">
+        <p>Packing preference is required.</p>
+      </div>
+
+      <p><strong>Packing Preference Explanation:</strong></p>
+      <ul>
+        <li><strong>Normal:</strong> Standard packaging for normal items.</li>
+        <li><strong>Fragile:</strong> Extra care for fragile items.</li>
+        <li><strong>Heavy Duty:</strong> Strong packaging for heavy items.</li>
+      </ul>
+
+      <!-- Dynamic Service Cost Calculation -->
+      <p><strong><font color=green>Parcel Service Cost:</font></strong> 
+        {{ parcel.Par_ServiceCost }} Rs
+      </p>
+
+      <label for="Par_PickupTime">Pickup Time:</label>
+      <input type="datetime-local" id="Par_PickupTime" [(ngModel)]="parcel.Par_PickupTime" name="Par_PickupTime" required #Par_PickupTime="ngModel" [min]="currentDateTime" />
+      <div class="validate" *ngIf="Par_PickupTime.invalid && Par_PickupTime.touched">
+        <p>Pickup time is required.</p>
+      </div>
+
+      <label for="Par_DropoffTime">Drop-off Time:</label>
+      <input type="datetime-local" id="Par_DropoffTime" [(ngModel)]="parcel.Par_DropoffTime" name="Par_DropoffTime" required #Par_DropoffTime="ngModel" [min]="parcel.Par_PickupTime" />
+      <div class="validate" *ngIf="Par_DropoffTime.invalid && Par_DropoffTime.touched">
+        <p>Drop-off time is required!</p>
+      </div>
+
+      <!-- Custom validation message for Drop-off Time -->
+      <div *ngIf="parcel.Par_PickupTime && parcel.Par_DropoffTime && ['new'] Date(parcel.Par_DropoffTime) <= new Date(parcel.Par_PickupTime)">
+        <p class="validate">Drop-off time must be later than Pickup time!</p>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" [disabled]="!bookingForm.form.valid || !isDropoffTimeValid()">Submit Booking</button>
+    </form>
+
+      <!-- Booking Confirmation Information -->
+      <div *ngIf="parcel.Booking_ID && parcel.Par_ServiceCost && parcel.Par_PaymentTime">
+        <div>
+          <label for="Par_ServiceCost">Parcel Service Cost:</label>
+          <input type="text" id="Par_ServiceCost" [value]="parcel.Par_ServiceCost | currency" disabled>
+        </div>
+        
+        <div>
+          <label for="Par_PaymentTime">Parcel Payment Time:</label>
+          <input type="text" id="Par_PaymentTime" [value]="parcel.Par_PaymentTime" disabled>
+        </div>
+  
+        <div>
+          <label for="Booking_ID">Parcel Booking ID:</label>
+          <input type="text" id="Booking_ID" [value]="parcel.Booking_ID" disabled>
+        </div>
+      </div>
+  </div>
+</div>

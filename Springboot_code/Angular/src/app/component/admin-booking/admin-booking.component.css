@@ -1,0 +1,56 @@
+body {
+   font-family: Arial, sans-serif;
+   background-color: #f4f4f4;
+   margin: 0;
+   padding: 20px;
+}
+
+.container {
+   width: 55%; /* Reduced width of the container to make the form smaller */
+   margin: auto;
+   background-color: white;
+   padding: 20px;
+   border-radius: 8px;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+   text-align: center;
+   color: #333;
+}
+
+.user-info, .booking-form, .booking-summary {
+   margin-bottom: 30px;
+}
+
+label {
+   display: block;
+   margin-top: 10px;
+   font-weight: bold;
+}
+
+input, textarea, select, button {
+   width: 90%; /* Reduced the width of input fields and button */
+   padding: 8px; /* Reduced padding */
+   margin: 10px 0;
+   border: 1px solid #ddd;
+   border-radius: 4px;
+}
+
+button {
+   background-color: #4CAF50;
+   color: white;
+   cursor: pointer;
+}
+
+button:hover {
+   background-color: #45a049;
+}
+
+textarea {
+   height: 80px; /* Reduced the height of the textarea */
+}
+
+.validate {
+   color: red;
+}

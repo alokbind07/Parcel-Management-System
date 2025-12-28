@@ -1,0 +1,59 @@
+/* Container styling */
+.tracking-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f6f8f4;
+    border: 1px solid rgb(8, 0, 0);
+    border-radius: 10px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+  }
+  
+  /* Heading style */
+  .tracking-container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  /* Label styling */
+  .tracking-container label {
+    font-size: 1rem;
+    color: #555;
+    display: block;
+    margin-bottom: 10px;
+    text-align: left;
+    margin-left: 10px;
+  }
+  
+  /* Input field styling */
+  .tracking-container input {
+    width: 60%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid rgb(15, 2, 2);
+    border-radius: 5px;
+    outline: none;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+  }
+  
+  /* Button styling */
+  .tracking-container button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #00ff2a;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Button hover effect */
+  .tracking-container button:hover {
+    background-color: #0056b3;
+}

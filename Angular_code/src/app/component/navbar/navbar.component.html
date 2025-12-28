@@ -1,0 +1,18 @@
+<div class="navbar-container">
+   
+    <div class="navbar">
+        <div class="nav-btn">
+            <a class="nav-btn"  routerLink="/customerHome">Home</a>
+            <a class="nav-btn" routerLink="/customerBooking">Book Parcel</a>
+            <a class="nav-btn"  routerLink="/invoice">Invoice</a>
+            <a class="nav-btn" routerLink="/customerSearch">Track Status</a>
+            <a class="nav-btn" routerLink="/searchHistory">Booking History</a>
+            <a class="nav-btn" routerLink="/contactSupport">Contact Support</a>
+        </div>
+
+        <div class="user-info">
+            <p> {{ user?.name || 'N/A' }}</p>
+            <a class="nav-btn" (click)="logout()" routerLink="/login">Logout</a>
+        </div>
+    </div>
+</div>

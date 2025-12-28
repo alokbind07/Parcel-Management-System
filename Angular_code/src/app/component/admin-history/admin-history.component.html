@@ -1,0 +1,40 @@
+<app-component-officer-navbar></app-component-officer-navbar>
+
+<div class="container">
+    <h1>All Bookings History</h1>
+  
+    <!-- Table to Display All Booking Information -->
+    <table>
+      <thead>
+        <tr>
+          <th>Customer ID</th>
+          <th>Booking ID</th>
+          <th>Booking Date</th>
+          <th>PickUp Time</th>
+          <th>Drop Time</th>
+          <th>Receiver Name</th>
+          <th>Delivered Address</th>
+          <th>Amount</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let record of bookings">
+          <td>{{ record.User_ID }}</td>
+          <td>{{ record.Booking_ID }}</td>
+          <td>{{ record.Par_PaymentTime }}</td>
+          <td>{{ record.Par_PickupTime }}</td>
+          <td>{{ record.Par_DropoffTime }}</td>
+          <td>{{ record.Rec_Name }}</td>
+          <td>{{ record.Rec_Address }}</td>
+          <td>{{ record.Par_ServiceCost }}</td>
+          <td> <strong>{{record.Par_Status }}</strong>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Message when no results found -->
+    <div *ngIf="bookings.length === 0">
+      <p>No bookings available.</p>
+    </div>
+  </div>

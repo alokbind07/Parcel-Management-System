@@ -1,0 +1,88 @@
+<app-component-officer-navbar></app-component-officer-navbar>
+
+<div class="main">
+    <div class="parcel-details-container" *ngIf="shareData">
+        <h2>Parcel Details of {{ shareData.User_Name }}</h2>
+        <table class="details-table">
+          <tr>
+            <th>Booking ID</th>
+            <td>{{ shareData.Booking_ID }}</td>
+          </tr>
+          <tr>
+            <th>User Name</th>
+            <td>{{ shareData.User_Name }}</td>
+          </tr>
+          <tr>
+            <th>User Address</th>
+            <td>{{ shareData.User_Address }}</td>
+          </tr>
+          <tr>
+            <th>Recipient Name</th>
+            <td>{{ shareData.Rec_Name }}</td>
+          </tr>
+          <tr>
+            <th>Recipient Address</th>
+            <td>{{ shareData.Rec_Address }}</td>
+          </tr>
+          <tr>
+            <th>Recipient PIN</th>
+            <td>{{ shareData.Rec_Pin }}</td>
+          </tr>
+          <tr>
+            <th>Recipient Mobile</th>
+            <td>{{ shareData.Rec_Mobile }}</td>
+          </tr>
+          <tr>
+            <th>Parcel Weight (grams)</th>
+            <td>{{ shareData.Par_Weight_Gram }}</td>
+          </tr>
+          <tr>
+            <th>Contents Description</th>
+            <td>{{ shareData.Par_Contents_Description }}</td>
+          </tr>
+          <tr>
+            <th>Delivery Type</th>
+            <td>{{ shareData.Par_Delivery_Type }}</td>
+          </tr>
+          <tr>
+            <th>Packing Preference</th>
+            <td>{{ shareData.Par_Packing_Preference }}</td>
+          </tr>
+          <tr>
+            <th>Pickup Time</th>
+            <td>{{ shareData.Par_PickupTime | date: 'long' }}</td>
+          </tr>
+          <tr>
+            <th>Dropoff Time</th>
+            <td>{{ shareData.Par_DropoffTime | date: 'long' }}</td>
+          </tr>
+          <tr>
+            <th>Service Cost</th>
+            <td>{{ shareData.Par_ServiceCost | currency: 'INR' }}</td>
+          </tr>
+          <tr>
+            <th>Payment Time</th>
+            <td>{{ shareData.Par_PaymentTime | date: 'long' }}</td>
+          </tr>
+          <tr>
+            <th>Status</th>
+            <td style="background-color: rgb(114, 158, 194);"><strong>{{ shareData.Par_Status }}</strong></td>
+          </tr>
+        </table>
+      </div>
+      <div >
+        <div class="admin-actions">
+            <a routerLink="/adminSearch">Back To Search </a>
+      </div>
+        
+     </div>
+        <!-- Button that will redirect to customerSearch -->
+        <!-- <button (click) = "navigateToLogin()" class="backbtn">Back to Customer Search</button> -->
+    
+    
+      <ng-template #loading>
+        <p>Loading parcel details...</p>
+      </ng-template>
+    
+    
+    </div>

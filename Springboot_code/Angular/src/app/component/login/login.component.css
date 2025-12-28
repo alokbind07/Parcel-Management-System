@@ -1,0 +1,84 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    height: 80%;
+}
+.error {
+    color: red;
+    font-size: 12px;
+  }
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+#login-body{
+    margin-top: 60px;
+    height: 360px;
+}
+
+form {
+    background-color: #fff;
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+table {
+    width: 100%;
+}
+td {
+    padding: 10px;
+    color: #555;
+}
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin: 4px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+button{
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #218838;
+}
+.action-links {
+    text-align: center;
+    margin-top: 20px;
+}
+.action-links a {
+    text-decoration: none;
+    margin: 0 10px;
+}
+.action-links input[type="submit"] {
+    background-color: #6c757d;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.action-links input[type="submit"]:hover {
+    background-color: #5a6268;
+}
+
+.action-links input[type="reset"] {
+    background-color: #6c757d;
+    color: white;
+    padding: 10px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.action-links input[type="reset"]:hover {
+    background-color: #5a6268;
+}

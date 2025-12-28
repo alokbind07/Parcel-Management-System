@@ -1,0 +1,161 @@
+
+<app-component-homenav></app-component-homenav>
+
+<div>
+<h2>Register Page</h2>
+<div id="register-page">
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+  <div *ngIf="registrationForm">
+    <table>
+      <tbody>
+        <tr>
+          <td>Name:</td>
+          <td>
+            <input type="text" formControlName="name" required>
+            <div *ngIf="registrationForm.get('name')?.touched && registrationForm.get('name')?.invalid">
+              <small *ngIf="registrationForm.get('name')?.errors?.['required']" class="error">Name is required.</small>
+              <small *ngIf="registrationForm.get('name')?.errors?.['pattern']" class="error">Name should only contain alphabets.</small>
+              <small *ngIf="registrationForm.get('name')?.errors?.['maxlength']" class="error">Name cannot exceed 25 characters.</small>
+              <small *ngIf="registrationForm.get('name')?.errors?.['minlength']" class="error">Name contain at least 4 characters.</small>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Email:</td>
+          <td>
+            <input type="text" formControlName="email" required>
+            <div *ngIf="registrationForm.get('email')?.touched && registrationForm.get('email')?.invalid">
+              <small *ngIf="registrationForm.get('email')?.errors?.['required']" class="error">Email is required.</small>
+              <small *ngIf="registrationForm.get('email')?.errors?.['email']" class="error">Please enter a valid email address.</small>
+              <small *ngIf="registrationForm.get('email')?.errors?.['pattern']" class="error">Email must end with '.com'.</small>
+              <small *ngIf="registrationForm.get('email')?.errors?.['maxlength']" class="error">Email cannot exceed 30 characters.</small>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Mobile No:</td>
+          <td>
+            <div style="display: flex; align-items: center;">
+              <select formControlName="countrycode" id="countrycode" required>
+                <option value="+91">+91</option>
+                <option value="+11">+11</option>
+                <option value="+44">+44</option>
+              </select>
+              <input type="text" formControlName="mobNo" required>
+            </div>
+            <div *ngIf="registrationForm.get('mobNo')?.touched && registrationForm.get('mobNo')?.invalid">
+              <small *ngIf="registrationForm.get('mobNo')?.errors?.['required']" class="error">Mobile number is required.</small>
+              <small *ngIf="registrationForm.get('mobNo')?.errors?.['pattern']" class="error">Mobile number must be 10 digits and cannot start with 0.</small>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Street:</td>
+          <td>
+            <input type="text" formControlName="street" required>
+            <div *ngIf="registrationForm.get('street')?.touched && registrationForm.get('street')?.invalid">
+              <small *ngIf="registrationForm.get('street')?.errors?.['required']" class="error">Street is required.</small>
+              <small *ngIf="registrationForm.get('street')?.errors?.['maxlength']" class="error">Street cannot exceed 20 characters.</small>
+              <small *ngIf="registrationForm.get('street')?.errors?.['pattern']" class="error">Street should only contain Alphabets.</small>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>City:</td>
+          <td>
+            <input type="text" formControlName="city" required>
+            <div *ngIf="registrationForm.get('city')?.touched && registrationForm.get('city')?.invalid">
+              <small *ngIf="registrationForm.get('city')?.errors?.['required']" class="error">City is required.</small>
+              <small *ngIf="registrationForm.get('city')?.errors?.['maxlength']" class="error">City cannot exceed 20 characters.</small>
+              <small *ngIf="registrationForm.get('city')?.errors?.['pattern']" class="error">City should only contain Alphabets.</small>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>State:</td>
+          <td>
+            <input type="text" formControlName="state" required>
+            <div *ngIf="registrationForm.get('state')?.touched && registrationForm.get('state')?.invalid">
+              <small *ngIf="registrationForm.get('state')?.errors?.['required']" class="error">State is required.</small>
+              <small *ngIf="registrationForm.get('state')?.errors?.['maxlength']" class="error">State cannot exceed 20 characters.</small>
+              <small *ngIf="registrationForm.get('state')?.errors?.['pattern']" class="error">State should only contain Alphabets.</small>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Postal Code:</td>
+          <td>
+            <input type="text" formControlName="postal_code" required>
+            <div *ngIf="registrationForm.get('postal_code')?.touched && registrationForm.get('postal_code')?.invalid">
+              <small *ngIf="registrationForm.get('postal_code')?.errors?.['required']" class="error">Postal code is required.</small>
+              <small *ngIf="registrationForm.get('postal_code')?.errors?.['pattern']" class="error">Postal code must be numeric and contain 6 digit.</small>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>UserID:</td>
+          <td>
+            <input type="text" formControlName="userID" placeholder="System Generated" readonly>
+            <div *ngIf="registrationForm.get('userID')?.touched && registrationForm.get('userID')?.invalid">
+              <small *ngIf="registrationForm.get('userID')?.errors?.['required']" class="error">UserID is required.</small>
+              <small *ngIf="registrationForm.get('userID')?.errors?.['minlength']" class="error">UserID must be at least 3 characters.</small>
+              <small *ngIf="registrationForm.get('userID')?.errors?.['maxlength']" class="error">UserID cannot exceed 15 characters.</small>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Password:</td>
+          <td>
+            <input type="password" formControlName="password" required>
+            <div *ngIf="registrationForm.get('password')?.touched && registrationForm.get('password')?.invalid">
+              <small *ngIf="registrationForm.get('password')?.errors?.['required']" class="error">Password is required.</small>
+              <small *ngIf="registrationForm.get('password')?.errors?.['minlength']" class="error">Password must be at least 6 characters.</small>
+              <small *ngIf="registrationForm.get('password')?.errors?.['maxlength']" class="error">Password cannot exceed 30 characters.</small>
+              <small *ngIf="registrationForm.get('password')?.errors?.['pattern']" class="error">Password must include at least one uppercase letter, one lowercase letter, one digit, and one special character.</small>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Confirm Password:</td>
+          <td>
+            <input type="password" formControlName="cPassword" required>
+            <div *ngIf="registrationForm.get('cPassword')?.touched && registrationForm.get('cPassword')?.invalid">
+              <small *ngIf="registrationForm.get('cPassword')?.errors?.['required']" class="error">Confirm Password is required.</small>
+              <small *ngIf="registrationForm.errors?.['mismatch']" class="error">Passwords do not match.</small>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td align="center">
+            <button type="reset" (click)="onReset()">Reset</button>
+          </td>
+          <td align="center">
+            <button type="submit" value="Register" [disabled]="registrationForm.invalid">Register</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</form>
+
+<!-- <div *ngIf="generatedUserID">
+  <h3>Your Generated UserID: {{ generatedUserID }}</h3>
+</div> -->
+
+<div class="action-links">
+  <p>Have an Account? <a routerLink="/login">Login Here</a></p>
+</div>
+</div>
+
+
+<!-- Acknowledgment Modal -->
+<!-- <div *ngIf="showAcknowledgment" class="acknowledgment-modal">
+  <div class="acknowledgment-content">
+    <h3>Registration Successful!</h3>
+    <p>Your registration was successful. You can now log in.</p>
+    <button (click)="closeAcknowledgment()">Close</button>
+  </div>
+</div>
+</div> -->
+
+

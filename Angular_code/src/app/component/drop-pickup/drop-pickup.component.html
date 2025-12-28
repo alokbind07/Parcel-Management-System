@@ -1,0 +1,47 @@
+<app-component-officer-navbar></app-component-officer-navbar>
+
+<div class="tracking-container">
+    <h2>Update Drop and Pickup Time</h2>
+    <br>
+
+    <label for="bookingId">Booking ID:</label>
+    <input 
+        type="text" 
+        [(ngModel)]="bookingId"  
+        id="bookingId" 
+        name="bookingid" 
+        placeholder="Enter your Booking ID" 
+    />
+    <br><br>
+
+    <label for="pickupTime">Pickup Time:</label>
+    <input 
+        type="datetime-local" 
+        [(ngModel)]="pickupTime"  
+        id="pickupTime" 
+        name="pickupTime" 
+       
+    />
+    <br><br>
+
+    <label for="dropTime">Drop Time:</label>
+    <input 
+        type="datetime-local" 
+        [(ngModel)]="dropTime"  
+        id="dropTime" 
+        name="dropTime" 
+    />
+    <br><br>
+
+    <button (click)="onUpdateTimes()">Update</button>
+    <br>
+    <br>
+    
+    <div >
+        <div class="admin-actions">
+            <a routerLink="/adminSearch">Back To Search </a>
+      </div>
+        
+     </div>
+ 
+</div>

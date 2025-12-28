@@ -1,0 +1,37 @@
+<app-component-navbar></app-component-navbar>
+<div class="main">
+    <div class="history-details-container">
+      <h2>Search History Details</h2>
+      <table class="history-table">
+        <thead>
+          <tr >
+            <th>Customer ID</th>
+            <th>Booking ID</th>
+            <th>Booking Date</th>
+            <th>Receiver Name</th>
+            <th>Delivered Address</th>
+            <th>Amount</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+            
+            
+          <tr *ngFor="let record of Data">
+            <td>{{ record.User_ID }}</td>
+            <td>{{ record.Booking_ID }}</td>
+            <td>{{ record.Par_PaymentTime }}</td>
+            <td>{{ record.Rec_Name }}</td>
+            <td>{{ record.Rec_Address }}</td>
+            <td>{{ record.Par_ServiceCost }}</td>
+            <td> <strong>{{record.Par_Status }}</strong>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="admin-actions">
+      <a routerLink="/searchHistory">Back to Search</a>
+    </div>
+  </div>
+  
