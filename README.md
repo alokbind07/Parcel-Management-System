@@ -132,3 +132,24 @@ Proper validation and confirmation messages are shown.
 1. Clone the repository  
    ```bash
    git clone <repository-url>
+2. Import backend project into IDE (IntelliJ / Eclipse)  
+3. Configure Derby database  
+4. Run Spring Boot application  
+
+###Frontend (Angular)  
+Navigate to Angular project folder  
+Install dependencies  
+npm install  
+
+Run Angular application  
+ng serve  
+
+Access application at  
+http://localhost:4200  
+
+📌 Conclusion  
+The Parcel Management System provides a complete solution for managing parcel operations with role-based access, real-time tracking, invoice generation, and delivery management using Angular, Spring Boot, and Derby database.  
+
+📄 License  
+This project is developed for educational and training purposes.
+
